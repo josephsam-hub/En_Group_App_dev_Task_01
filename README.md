@@ -1,4 +1,4 @@
-📖 Story Postcard
+Story Postcard :
 
 🎨 An Android app that generates random short stories, overlays them on custom backgrounds, speaks them aloud, and lets you save/share postcard-style images.
 
@@ -18,7 +18,7 @@
 
 📱 Modern Android → Uses Activity Result APIs, MediaStore, and works from Android 5 (Lollipop) to Android 14.
 
-🛠️ Tech Stack
+Tech Stack :
 
 Language: Kotlin
 
