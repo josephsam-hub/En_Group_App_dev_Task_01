@@ -66,14 +66,13 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         "Never give up on your dreams."
     )
 
-    // Gallery picker (Activity Result API)
     private val pickImageLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
         uri?.let {
             bgImage.setImageURI(it)
         }
     }
 
-    // Request permission launcher for legacy WRITE_EXTERNAL_STORAGE (only for < Q)
+   
     private val requestWritePermission = registerForActivityResult(ActivityResultContracts.RequestPermission()) { granted ->
         if (granted) {
             Toast.makeText(this, "Permission granted — try saving again", Toast.LENGTH_SHORT).show()
@@ -104,7 +103,7 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         }
 
         pickBtn.setOnClickListener {
-            // Pick image from gallery
+            
             pickImageLauncher.launch("image/*")
         }
 
@@ -123,7 +122,7 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         }
 
         saveBtn.setOnClickListener {
-            // ensure permission on legacy devices
+            
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
                 if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
                     requestWritePermission.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE)
@@ -141,7 +140,7 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         }
 
         shareBtn.setOnClickListener {
-            // share last saved image if present, else capture and share directly
+            
             if (lastSavedUri != null) {
                 shareImage(lastSavedUri!!)
             } else {
@@ -161,7 +160,7 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     }
 
     private fun getBitmapFromView(view: View): Bitmap {
-        // ensure view has measured size
+       
         if (view.width == 0 || view.height == 0) {
             val specWidth = View.MeasureSpec.makeMeasureSpec(1080, View.MeasureSpec.EXACTLY)
             val specHeight = View.MeasureSpec.makeMeasureSpec(1920, View.MeasureSpec.EXACTLY)
@@ -211,7 +210,6 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
                 bitmap.compress(Bitmap.CompressFormat.JPEG, 90, fos)
                 fos.close()
                 val uri = Uri.fromFile(image)
-                // update gallery
                 sendBroadcast(Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, uri))
                 return uri
             }
@@ -243,4 +241,5 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         tts?.shutdown()
         super.onDestroy()
     }
+
 }
