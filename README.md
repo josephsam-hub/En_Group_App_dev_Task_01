@@ -38,17 +38,3 @@ Min SDK: 21 (Lollipop)
 
 Target SDK: 34 (Android 14)
 
-📂 Project Structure
-StoryPostcard/
- ├── app/
- │   ├── src/
- │   │   ├── main/
- │   │   │   ├── java/com/example/storypostcard/MainActivity.kt
- │   │   │   ├── res/
- │   │   │   │   ├── layout/activity_main.xml
- │   │   │   │   ├── drawable/ (icons, backgrounds if any)
- │   │   │   │   ├── values/ (themes, colors, strings)
- │   │   │   └── AndroidManifest.xml
- │   ├── build.gradle
- ├── gradle/
- └── README.md
